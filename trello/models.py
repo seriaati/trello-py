@@ -19,7 +19,7 @@ class TrelloList(BaseModel):
     id: str
     name: str
     closed: bool
-    position: int = Field(alias="pos")
+    position: float = Field(alias="pos")
     board_id: str = Field(alias="idBoard")
 
 
@@ -30,7 +30,7 @@ class TrelloCard(BaseModel):
     short_url: str = Field(alias="shortUrl")
     url: str
     closed: bool
-    position: int = Field(alias="pos")
+    position: float = Field(alias="pos")
     list_id: str = Field(alias="idList")
     board_id: str = Field(alias="idBoard")
     completed: bool = Field(alias="dueComplete")
