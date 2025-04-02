@@ -1,2 +1,2 @@
 # trello-py
- Trello API wrapper.
+Async API wrapper for Trello written in Python.
