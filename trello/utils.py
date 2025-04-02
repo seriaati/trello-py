@@ -9,10 +9,10 @@ if TYPE_CHECKING:
 
     from .types import OAuthCallbackMethod, OAuthExpiration, OAuthScope
 
-__all__ = ("get_oauth_url",)
+__all__ = ("generate_oauth_url",)
 
 
-def get_oauth_url(
+def generate_oauth_url(
     *,
     callback_method: OAuthCallbackMethod,
     return_url: str,
