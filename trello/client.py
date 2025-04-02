@@ -100,6 +100,10 @@ class TrelloAPI:
         )
         return TrelloCard(**data)
 
+    async def delete_card(self, card_id: str) -> None:
+        endpoint = f"cards/{card_id}"
+        await self._request(endpoint, method="DELETE")
+
     async def create_label(self, create: TrelloLabelCreate) -> TrelloLabel:
         endpoint = "labels"
         data = await self._request(
