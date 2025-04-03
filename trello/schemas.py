@@ -15,7 +15,7 @@ class TrelloCardCreate(BaseModel):
     pos: TrelloCardPos | PositiveInt | None = Field(alias="position", default=None)
     closed: bool | None = Field(default=None)
     dueComplete: bool | None = Field(alias="completed", default=None)
-    labels: list[str] | None = Field(default=None)
+    idLabels: list[str] | None = Field(alias="label_ids", default=None)
 
 
 class TrelloCardUpdate(BaseModel):
@@ -26,6 +26,7 @@ class TrelloCardUpdate(BaseModel):
     pos: TrelloCardPos | PositiveInt | None = Field(alias="position", default=None)
     closed: bool | None = Field(default=None)
     dueComplete: bool | None = Field(alias="completed", default=None)
+    idLabels: list[str] | None = Field(alias="label_ids", default=None)
 
     idList: str | None = Field(alias="list_id", default=None)
 
