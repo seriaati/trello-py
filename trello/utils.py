@@ -34,6 +34,6 @@ def generate_oauth_url(
     return str(base.with_query(params))
 
 
-def get_random_label_color() -> str:
+def get_random_label_color() -> TrelloLabelColor:
     colors = get_args(TrelloLabelColor)
     return random.choice(colors)
