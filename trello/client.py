@@ -48,8 +48,12 @@ class TrelloAPI:
         params["token"] = self.__api_token
 
         for key, value in params.items():
-            if isinstance(value, bool):
+            if value is None:
+                params.pop(key)
+            elif isinstance(value, bool):
                 params[key] = str(value).lower()
+            elif isinstance(value, list):
+                params[key] = ",".join(map(str, value))
 
         async with self.session.request(method, self._base_url / endpoint, params=params) as resp:
             resp.raise_for_status()
