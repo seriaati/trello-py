@@ -1,15 +1,18 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+import random
+from typing import TYPE_CHECKING, get_args
 
 from yarl import URL
+
+from .types import TrelloLabelColor
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
     from .types import OAuthCallbackMethod, OAuthExpiration, OAuthScope
 
-__all__ = ("generate_oauth_url",)
+__all__ = ("generate_oauth_url", "get_random_label_color")
 
 
 def generate_oauth_url(
@@ -29,3 +32,8 @@ def generate_oauth_url(
         "scope": ",".join(scopes),
     }
     return str(base.with_query(params))
+
+
+def get_random_label_color() -> str:
+    colors = get_args(TrelloLabelColor)
+    return random.choice(colors)
