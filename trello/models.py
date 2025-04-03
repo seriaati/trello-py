@@ -34,6 +34,7 @@ class TrelloCard(BaseModel):
     list_id: str = Field(alias="idList")
     board_id: str = Field(alias="idBoard")
     completed: bool = Field(alias="dueComplete")
+    label_ids: list[str] = Field(alias="labels")
 
 
 class TrelloLabel(BaseModel):
