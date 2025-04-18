@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field, PositiveInt
 
-from .types import TrelloCardPos, TrelloLabelColor
+from .types import CardPos, LabelColor
 
 __all__ = ("TrelloCardCreate", "TrelloCardUpdate", "TrelloLabelCreate")
 
@@ -12,7 +12,7 @@ class TrelloCardCreate(BaseModel):
     idList: str = Field(alias="list_id")
 
     desc: str | None = Field(alias="description", default=None)
-    pos: TrelloCardPos | PositiveInt | None = Field(alias="position", default=None)
+    pos: CardPos | PositiveInt | None = Field(alias="position", default=None)
     closed: bool | None = Field(default=None)
     dueComplete: bool | None = Field(alias="completed", default=None)
     idLabels: list[str] | None = Field(alias="label_ids", default=None)
@@ -23,7 +23,7 @@ class TrelloCardUpdate(BaseModel):
 
     name: str | None = Field(default=None)
     desc: str | None = Field(alias="description", default=None)
-    pos: TrelloCardPos | PositiveInt | None = Field(alias="position", default=None)
+    pos: CardPos | PositiveInt | None = Field(alias="position", default=None)
     closed: bool | None = Field(default=None)
     dueComplete: bool | None = Field(alias="completed", default=None)
     idLabels: list[str] | None = Field(alias="label_ids", default=None)
@@ -33,5 +33,5 @@ class TrelloCardUpdate(BaseModel):
 
 class TrelloLabelCreate(BaseModel):
     name: str
-    color: TrelloLabelColor
+    color: LabelColor
     idBoard: str = Field(alias="board_id")

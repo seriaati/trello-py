@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING, get_args
 
 from yarl import URL
 
-from .types import TrelloLabelColor
+from .types import LabelColor
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
@@ -34,6 +34,6 @@ def generate_oauth_url(
     return str(base.with_query(params))
 
 
-def get_random_label_color() -> TrelloLabelColor:
-    colors = get_args(TrelloLabelColor)
+def get_random_label_color() -> LabelColor:
+    colors = get_args(LabelColor)
     return random.choice(colors)

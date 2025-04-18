@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
-from trello.types import TrelloLabelColor
+from trello.types import LabelColor
 
 __all__ = ("TrelloBoard", "TrelloCard", "TrelloLabel", "TrelloList")
 
@@ -40,6 +40,6 @@ class TrelloCard(BaseModel):
 class TrelloLabel(BaseModel):
     id: str
     name: str
-    color: TrelloLabelColor
+    color: LabelColor
     uses: int = Field(alias="uses")
     board_id: str = Field(alias="idBoard")
