@@ -58,7 +58,8 @@ class TrelloAPI:
                 params[key] = ",".join(map(str, value))
 
         async with self.session.request(method, self._base_url / endpoint, params=params) as resp:
-            raise_for_status_code(resp.status)
+            if not str(resp.status).startswith("2"):
+                raise_for_status_code(resp.status)
             return await resp.json()
 
     async def start(self) -> None:
