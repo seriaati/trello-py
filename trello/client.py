@@ -6,6 +6,8 @@ import aiohttp
 from loguru import logger
 from yarl import URL
 
+from trello.errors import raise_for_status_code
+
 from .models import TrelloBoard, TrelloCard, TrelloLabel, TrelloList
 
 if TYPE_CHECKING:
@@ -56,7 +58,7 @@ class TrelloAPI:
                 params[key] = ",".join(map(str, value))
 
         async with self.session.request(method, self._base_url / endpoint, params=params) as resp:
-            resp.raise_for_status()
+            raise_for_status_code(resp.status)
             return await resp.json()
 
     async def start(self) -> None:
